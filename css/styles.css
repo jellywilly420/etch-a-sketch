@@ -1,0 +1,25 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.container {
+    box-sizing: content-box;
+    width: 540px;
+    height: 540px;
+    background-color: antiquewhite;
+    border: 2px solid sienna;
+    display: flex;
+    flex-wrap: wrap;
+    /* overflow: hidden; */
+}
+.tile {
+    background-color: aqua;
+    border: .1px solid rgba(0, 0, 0, 0.233);
+}
+.tile:hover {
+    background-color: chocolate;
+}
+/* .tiles-per-side {
+
+} */
