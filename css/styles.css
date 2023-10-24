@@ -5,21 +5,22 @@
 }
 .container {
     box-sizing: content-box;
-    width: 540px;
-    height: 540px;
-    background-color: antiquewhite;
+    width: 480px;
+    height: 480px;
+    background-color: rgb(255, 81, 0);
     border: 2px solid sienna;
-    display: flex;
-    flex-wrap: wrap;
-    /* overflow: hidden; */
+    font-size: 0;
 }
 .tile {
-    background-color: aqua;
+    display: inline-block;
+    background-color: hsl(184, 36%, 83%);
     border: .1px solid rgba(0, 0, 0, 0.233);
 }
-.tile:hover {
-    background-color: chocolate;
+.color-modes, .settings, body, .slider-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-/* .tiles-per-side {
-
-} */
+button.active {
+    background-color: blanchedalmond;
+}

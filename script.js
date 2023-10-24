@@ -1,35 +1,88 @@
 const div = document.createElement('div');
 const container = document.querySelector('.container');
-const slider = document.querySelector('#slider');
-const sliderValue = document.querySelector('span#value');
+const sideLengthSlider = document.querySelector('#tiles-per-side');
+const sliderSpan = document.querySelector('#slider-span');
+sliderSpan.value = 8;
+const clearButton = document.querySelector('#clear-button');
+const colorPicker = document.querySelector('#color-picker');
 
-// let canvasWidth = window.getComputedStyle(container).getPropertyValue("width").split('').filter((char)=>{return char in ['0','1','2','3','4','5','6','7','8','9']}).join('');
-let canvasWidth = 540;
-let sideLength = 16;
-let numberOfTiles = sideLength**2;
+let mouseDown = false;
 
-function fillCanvas(numberOfTiles) {
-    while (container.firstChild) {container.removeChild(container.firstChild)}
+
+let canvasWidth = 480;
+let tilesPerSide = 8;
+let numberOfTiles = tilesPerSide**2;
+
+let mainColor = "darkblue";
+
+function fillCanvas() {
     let counter = 1;
+    let tileWidth = canvasWidth/tilesPerSide + 'px';
+    let tileHeight = tileWidth;
     while (counter <= numberOfTiles) {
         container.appendChild(div.cloneNode());
         container.childNodes[counter-1].classList.add('tile');
-        container.childNodes[counter-1].style.width = canvasWidth/sideLength + 'px';
-        container.childNodes[counter-1].style.height = canvasWidth/sideLength + 'px';
+        
 
-        container.childNodes[counter-1].addEventListener('mouseenter', (event) => {
-            event.target.style.backgroundColor = "red";
+        container.childNodes[counter-1].style.width = tileWidth;
+        container.childNodes[counter-1].style.height = tileHeight;
+        
+        container.childNodes[counter-1].addEventListener('mousedown', (event) => {
+            event.target.style.backgroundColor = mainColor;
         })
+        container.childNodes[counter-1].addEventListener('mouseenter', (event) => {
+            if (mouseDown) {
+                event.target.style.backgroundColor = mainColor;
+            }
+        })
+        
         counter++;
     }
 }
 
-fillCanvas(numberOfTiles);
+function clearCanvas() {
+    while (container.firstChild) {
+        container.removeChild(container.firstChild);
+    }
+}
 
-slider.addEventListener('input', () => {
-    sliderValue.innerText = slider.value;
-    sideLength = slider.value;
+function resizeCanvas(sideLength) {
+    tilesPerSide = sideLength;
     numberOfTiles = sideLength**2;
-    console.log(sideLength, numberOfTiles, container.childNodes.length);
-    fillCanvas(numberOfTiles);
+}
+
+function getRandomColor() {
+    return('rgb(' + Math.floor(Math.random()*255)+ ',' + Math.floor(Math.random()*255) + ',' + Math.floor(Math.random()*255) + ')');
+}
+
+// Runtime
+
+fillCanvas();
+
+
+// Eventlisteners
+container.addEventListener('dragstart', (event)=>{
+    event.preventDefault();
+})
+sideLengthSlider.addEventListener('input', ()=>{
+    const input = sideLengthSlider.value;
+    sliderSpan.innerText = input;
+    clearCanvas();
+    resizeCanvas(parseInt(input));
+    fillCanvas();
+})
+
+clearButton.addEventListener('click', ()=>{
+    clearCanvas();
+    fillCanvas();
+})
+
+colorPicker.addEventListener('input', ()=>{
+    mainColor = colorPicker.value;
+})
+container.addEventListener('mousedown', ()=>{
+    mouseDown = true;
+})
+container.addEventListener('mouseup', ()=>{
+    mouseDown = false;
 })
