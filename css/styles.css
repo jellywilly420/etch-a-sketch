@@ -5,8 +5,8 @@
 }
 .container {
     box-sizing: content-box;
-    width: 480px;
-    height: 480px;
+    width: 960px;
+    height: 960px;
     background-color: rgb(255, 81, 0);
     border: 2px solid sienna;
     font-size: 0;
@@ -14,6 +14,8 @@
 .tile {
     display: inline-block;
     background-color: hsl(184, 36%, 83%);
+}
+.tile-border {
     border: .1px solid rgba(0, 0, 0, 0.233);
 }
 .color-modes, .settings, body, .slider-container {
