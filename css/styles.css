@@ -1,28 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Playpen+Sans&display=swap');
+:root {
+    --red-1: #E23E57;
+    --red-2: #850000;
+    --light: #EEEEEE;
+    --vibrant: #00ADB5;
+    --medium-2: #303841;
+    --dark: #1E212D;
+}
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
+body {
+    font-family: 'Playpen Sans', cursive;
+    background-color: var(--light);
+}
+.main {
+    display: flex;
+    flex-wrap: wrap;
+    padding: .75rem .5rem;
+}
+h1 {
+    width: 100%;
+    font-size: 2.6rem;
+    text-align: center;
+    background-color: var(--medium-2);
+    color: var(--light);
+    padding: .5rem 0;
+}
+h2 {
+    text-align: center;
+    font-size: 2.35rem;
+    color: var(--light);
+    margin-bottom: 2.5rem;
+    padding: .75rem 0;
+}
+h3 {
+    font-size: 1.4rem;
+    color: var(--light);
+    margin-top: 1.5rem;
+}
+.settings {
+    flex: auto;
+    background-color: var(--medium-2);
+    border-radius: 12px 0 0 12px;
+    border: 5px solid var(--dark);
+}
+.color-modes, .color-mode-container {
+    gap: .5rem;
+}
+#clear-button {
+    margin-top: 1.5rem;
+}
+
+button, #color-picker {
+    width: 170px;
+    height: 55px;
+    border: 2px solid var(--medium-2);
+    color: var(--medium-2);
+    background-color: var(--light);
+    border-radius: 5px;
+    font-size: 1.25rem;
+    font-weight: 600;
+    transition: background-color .15s ease-in-out, color .15s ease-in-out, border .15s ease-in-out, border-color .15s ease-in-out;
+}
+
+button.active, button:hover {
+    background-color: var(--medium-2);
+    border-color: var(--light);
+    color: var(--light);
+}
+.settings button#clear-button {
+    background-color: var(--red-1);
+    border-color: var(--light);
+    color: var(--light);
+}
+.settings button#clear-button:hover {
+    background-color: var(--red-2);
+}
+
+.slider-container {
+    margin-top: 2rem;
+    gap: .5rem;
+}
+#tiles-per-side {
+    width: 220px;
+    height: 20px;
+    accent-color: var(--light);
+}
+label, span {
+    color: var(--light);
+    font-size: 1.15rem;
+}
+
 .container {
     box-sizing: content-box;
-    width: 960px;
-    height: 960px;
-    background-color: rgb(255, 81, 0);
-    border: 2px solid sienna;
+    width: 720px;
+    height: 720px;
     font-size: 0;
+    flex: none;
+    border-radius: 0 12px 12px 0;
+    border-right: 5px solid var(--dark);
+    border-top: 5px solid var(--dark);
+    border-bottom: 5px solid var(--dark);
 }
 .tile {
     display: inline-block;
-    background-color: hsl(184, 36%, 83%);
+    background-color: var(--light);
 }
 .tile-border {
-    border: .1px solid rgba(0, 0, 0, 0.233);
+    border: .1px solid #BBBFCA;
 }
-.color-modes, .settings, body, .slider-container {
+.color-modes, .settings, .slider-container, .color-mode-container{
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-button.active {
-    background-color: blanchedalmond;
 }

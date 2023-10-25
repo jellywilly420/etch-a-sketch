@@ -8,11 +8,10 @@ sliderSpan.value = 8;
 const clearButton = document.querySelector('#clear-button');
 const colorPicker = document.querySelector('#color-picker');
 const colorModeButtons = document.querySelectorAll('.color-modes button');
-console.log(colorModeButtons);
 const colorMode = document.querySelector('.color-mode');
 const rainbowMode = document.querySelector('.rainbow-mode');
 const eraserMode = document.querySelector('.eraser-mode');
-const defaultBackgroundColor = 'hsl(184, 36%, 83%)';
+const defaultBackgroundColor = '#EEEEEE';
 const tileButton = document.querySelector('.tile-button')
 
 let mouseDown = false;
@@ -23,7 +22,7 @@ let canvasWidth = [...window.getComputedStyle(container).width].filter((char)=>{
 let tilesPerSide = 8;
 let numberOfTiles = tilesPerSide**2;
 
-let mainColor = "darkblue";
+let mainColor = colorPicker.value;
 
 // Functions
 
@@ -33,7 +32,10 @@ function fillCanvas() {
     let tileHeight = tileWidth;
     while (counter <= numberOfTiles) {
         container.appendChild(div.cloneNode());
-        container.childNodes[counter-1].classList.add('tile', 'tile-border');
+        container.childNodes[counter-1].classList.add('tile');
+        if (tileMode()){
+            container.childNodes[counter-1].classList.add('tile-border');
+        }
         
 
         container.childNodes[counter-1].style.width = tileWidth;
@@ -84,6 +86,15 @@ function setColor(tile) {
     }
     else if (getColorMode() === eraserMode){
         tile.style.backgroundColor = defaultBackgroundColor;
+    }
+}
+
+function tileMode() {
+    if (tileButton.classList.contains('active')){
+        return true;
+    }
+    else {
+        return false;
     }
 }
 

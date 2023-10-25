@@ -9,23 +9,29 @@
         <link rel="stylesheet" href="css/styles.css">
     </head>
     <body>
-        <div class="settings">
-            <div class="color-modes">
-                <input type="color" name="color-picker" id="color-picker" value="#00008B">
-                <button class="color-mode active">color mode</button>
-                <button class="rainbow-mode">rainbow mode</button>
-                <button class="eraser-mode">eraser mode</button>
+        <h1>ETCH-A-SKETCH</h1>
+        <div class="main">
+            <div class="settings">
+                <h2>settings</h2>
+                <button class="tile-button active">tile borders</button>
+                <div class="color-modes">
+                    <h3>modes</h3>
+                    <div class="color-mode-container">
+                        <input type="color" name="color-picker" id="color-picker" value="#0F0F0F">
+                        <button class="color-mode active">color mode</button>
+                    </div>
+                    <button class="rainbow-mode">rainbow mode</button>
+                    <button class="eraser-mode">eraser mode</button>
+                </div>
+                <button id="clear-button">clear</button>
+                <div class="slider-container">
+                    <label for="tiles-per-side">Choose the number of tiles: </label>
+                    <input type="range" name="tiles-per-side" id="tiles-per-side" min="8" max="96" step="8" value="8">
+                    <span id="slider-span">8x8</span>
+                </div>   
             </div>
-            <button id="clear-button">Clear</button>
-            <button class="tile-button active">tile borders</button>
-            <div class="slider-container">
-                <label for="tiles-per-side">Choose the number of tiles: </label>
-                <input type="range" name="tiles-per-side" id="tiles-per-side" min="8" max="96" step="8" value="8">
-                <span id="slider-span">8x8</span>
-            </div>
-            
-        </div>
         <div class="container"></div>
+        </div>
         <script src="script.js" defer></script>
     </body>
 </html>
